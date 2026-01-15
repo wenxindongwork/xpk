@@ -277,11 +277,12 @@ def run_gke_node_pool_create_command(
   for node_pool_name in desired_node_pool_names:
     if node_pool_name in node_pools_to_remain:
       continue
+    print("Creating node pool with 2000 disk size")
     command = (
         'gcloud beta container node-pools create'
         f' {node_pool_name}'
         f' --location={get_cluster_location(args.project, args.cluster, args.zone)}'
-        f' --cluster={args.cluster}'
+        f' --cluster={args.cluster} --disk-size=2000'
         f' --project={args.project} --node-locations={args.zone}'
         f' --machine-type={system.gce_machine_type}'
         f' --host-maintenance-interval={args.host_maintenance_interval}'
@@ -361,7 +362,7 @@ def run_gke_node_pool_create_command(
         continue
       command = (
           'gcloud beta container node-pools create'
-          f' {node_pool_name} --node-version={gke_node_pool_version} --cluster={args.cluster} --project={args.project} --node-locations={args.zone} --location={get_cluster_location(args.project, args.cluster, args.zone)} --num-nodes=1'
+          f' {node_pool_name} --node-version={gke_node_pool_version} --cluster={args.cluster} --project={args.project} --node-locations={args.zone} --disk-size=2000 --location={get_cluster_location(args.project, args.cluster, args.zone)} --num-nodes=1'
           f' --machine-type={args.pathways_gce_machine_type} --scopes=storage-full,gke-default,{CLOUD_PLATFORM_AUTH_SCOPE_URL} --enable-autoscaling'
           ' --min-nodes=1 --max-nodes=20'
       )

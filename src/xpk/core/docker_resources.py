@@ -37,7 +37,7 @@ def get_main_container_resources(
   """
   # Resources requirements for Pathways workload containers are known.
   resources_yaml = """cpu: "24"
-                    memory: 100G"""
+                    memory: 700G"""
   if args.use_pathways:
     return resources_yaml
 
