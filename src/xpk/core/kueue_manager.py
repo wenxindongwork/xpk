@@ -369,7 +369,7 @@ class KueueManager:
     if is_pathways:
       flavors.append({
           "name": "cpu-user",
-          "nodeLabels": {"cloud.google.com/gke-nodepool": "cpu-np"},
+          "nodeLabels": {"cloud.google.com/gke-nodepool": "more-cpu-ram"},
       })
       resource_groups.append({
           "coveredResources": ["cpu", "memory"],

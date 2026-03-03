@@ -31,7 +31,7 @@ metadata:
   name: cpu-user
 spec:
   nodeLabels:
-    cloud.google.com/gke-nodepool: cpu-np
+    cloud.google.com/gke-nodepool: more-cpu-ram
 ---"""
   if args.enable_pathways:
     return resource_flavor_yaml
@@ -79,7 +79,7 @@ def ensure_pathways_workload_prerequisites(args, system) -> bool:
 
   # Ensure the cluster and CPU nodepools were created with create-pathways
   all_node_pools = get_all_nodepools_programmatic(args)
-  desired_pw_cpu_node_pools = {'cpu-np'}
+  desired_pw_cpu_node_pools = {'more-cpu-ram'}
   if (
       not desired_pw_cpu_node_pools.issubset(set(all_node_pools[0]))
       and not is_dry_run()
@@ -267,7 +267,7 @@ def get_user_workload_for_pathways(
             containers:
               {container}
             nodeSelector:
-              cloud.google.com/gke-nodepool: cpu-np
+              cloud.google.com/gke-nodepool: more-cpu-ram
             hostNetwork: true
             dnsPolicy: ClusterFirstWithHostNet
             restartPolicy: Never

@@ -354,7 +354,7 @@ def run_gke_node_pool_create_command(
     create_commands.append(command)
     create_task_names.append(task)
 
-  desired_pw_cpu_node_pools = ['cpu-np']
+  desired_pw_cpu_node_pools = ['more-cpu-ram']
   if args.enable_pathways:
     # Pathways needs CPU nodepools in addition to TPU nodepools
     for node_pool_name in desired_pw_cpu_node_pools:
